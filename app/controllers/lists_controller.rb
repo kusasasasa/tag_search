@@ -7,12 +7,16 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list
+    @list=List.find(params[:id])
   end
   def create
-    list = List.new(list_params)
-    list.save
-    redirect_to '/top'
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to list_path(@list.id)
+    else
+       @lists = List.all      
+       render :new
+    end
   end
   def edit
   end
