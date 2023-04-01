@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_24_234049) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_01_220402) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -46,6 +46,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_234049) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tag_ralations", force: :cascade do |t|
+    t.integer "name_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name_id"], name: "index_tag_ralations_on_name_id"
+    t.index ["tag_id"], name: "index_tag_ralations_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "tag_ralations", "names"
+  add_foreign_key "tag_ralations", "tags"
 end
