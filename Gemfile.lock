@@ -88,8 +88,10 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
+    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gmaps4rails (2.1.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.5)
@@ -212,6 +214,8 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  geocoder
+  gmaps4rails
   importmap-rails
   jbuilder
   puma (~> 5.0)
