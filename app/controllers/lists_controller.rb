@@ -4,6 +4,7 @@ class ListsController < ApplicationController
   end
   
   def index
+    @list=List.all
   end
 
   def show
@@ -12,15 +13,20 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to list_path(@list.id)
+      redirect_to lists_path
     else
        @lists = List.all      
        render :new
     end
   end
+  def update
+    
+  end
   def edit
   end
+  
+  private
   def list_params
-    params.require(:list).permit(:title, :body)
+    params.require(:list).permit(:title, :body, :address, :latitude, :longitude)
   end
 end
